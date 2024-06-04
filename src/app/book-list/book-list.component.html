@@ -1,32 +1,36 @@
 <h1>Lista de libros</h1>
-<table class="table table-info">
+<table class="table">
     <thead>
         <tr>
+            <th>libro</th>
             <th>Nombre</th>
             <th>Categoria</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Compra</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><img [src]="book.image" [alt]="book.image"></td>
+        @for (book of books; track book.name) {
+        <tr [ngClass]="{'clearance':book.clearance}">
+            <td><img width="100" class="img-thumbnail" [src]="book.image" [alt]="book.image"></td>
             <td>{{book.name}}</td>
             <td>{{book.category}}</td>
-            <td>{{book.price}}</td>
-            <td>{{book.stock}}</td>
+            <td>{{book.price | currency}}</td>
+            @if (book.stock>0) {
+                <td>{{book.stock}}</td>
+            }@else {
+                <td class="badge text-bg-danger">sin stock</td>
+            }
+            <td>
+                <button class="btn btn-primary btn-sm" >-</button>
+                {{book.quantity}}
+                <button class="btn btn-primary btn-sm">+</button></td>
         </tr>
+    }@empty {
         <tr>
-            <td>La Rueda del Tiempo</td>
-            <td>fantasía</td>
-            <td>50000</td>
-            <td>5</td>
+            <td colspan="4">no hay libros para mostrar</td>
         </tr>
-        <tr>
-            <td>Nacidos de la Bruma</td>
-            <td>fantasía</td>
-            <td>40000</td>
-            <td>3</td>
-        </tr>
+    }
     </tbody>
 </table>
