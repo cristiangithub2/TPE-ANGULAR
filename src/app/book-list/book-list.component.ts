@@ -5,7 +5,7 @@ import { Book } from './book';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrl: './book-list.component.scss'
+  styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent {
   books: Book[] =[
@@ -46,4 +46,17 @@ export class BookListComponent {
       quantity:0,
     }
   ];
+
+  constructor(){}
+  ngOnInit(): void{
+
+  }
+  upQuantity(book: Book): void{
+    if(book.quantity < book.stock)
+    book.quantity++;
+  }
+  downQuantity(book: Book): void{
+    if(book.quantity>0)
+    book.quantity--;
+  }
 }
