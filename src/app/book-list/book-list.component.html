@@ -1,1 +1,32 @@
-<p>book-list works!</p>
+<h1>Lista de libros</h1>
+<table class="table table-info">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img [src]="book.image" [alt]="book.image"></td>
+            <td>{{book.name}}</td>
+            <td>{{book.category}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.stock}}</td>
+        </tr>
+        <tr>
+            <td>La Rueda del Tiempo</td>
+            <td>fantasía</td>
+            <td>50000</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Nacidos de la Bruma</td>
+            <td>fantasía</td>
+            <td>40000</td>
+            <td>3</td>
+        </tr>
+    </tbody>
+</table>
